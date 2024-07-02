@@ -11,6 +11,7 @@ sudo apt install\
 	fzf\
 	gnome-themes-extra\
 	i3\
+	lsd\
 	lxappearance\
 	neovim\
 	pcmanfm\

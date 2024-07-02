@@ -4,6 +4,7 @@
 sudo apt update && sudo apt upgrade -y
 sudo apt install\
 	alacritty\
+	alsa-base\
 	bat\
 	build-essential\
 	feh\
@@ -17,6 +18,7 @@ sudo apt install\
 	pcmanfm\
 	picom\
 	polybar\
+	pulseaudio\
 	qt5ct\
 	ripgrep\
 	rofi\

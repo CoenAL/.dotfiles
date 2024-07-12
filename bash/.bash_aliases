@@ -1,6 +1,9 @@
 alias bal='nvim ~/.bash_aliases'
 alias nv='nvim'
-alias bat='batcat'
+if command -v batcat &> /dev/null; then
+	alias cat='batcat'
+	alias bat='batcat'
+fi
 
 # config shortcuts
 alias nvc='nvim ~/.config/nvim/'

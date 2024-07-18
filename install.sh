@@ -44,4 +44,14 @@ unzip JetBrainsMono.zip
 fc-cache -fv
 cd
 
+# set local time zone to Europe/Amsterdam
+sudo timedatectl set-timezone Europe/Amsterdam
+
+# isntall nerdfetch
+sudo curl -fsSL https://raw.githubusercontent.com/ThatOneCalculator/NerdFetch/main/nerdfetch -o /usr/bin/nerdfetch
+sudo chmod +x /usr/bin/nerdfetch
+
+# suppress ubuntu welcome message
+touch ~/.hushlogin
+
 # Set GTK theme with lxappearnce

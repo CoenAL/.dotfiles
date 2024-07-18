@@ -123,3 +123,4 @@ if ! shopt -oq posix; then
 fi
 
 export EDITOR=nvim
+nerdfetch && echo ""

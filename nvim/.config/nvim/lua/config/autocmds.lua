@@ -36,6 +36,6 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 	desc = "Cursorline normal-mode",
 	group = group,
 	callback = function()
-		vim.api.nvim_set_hl(0, "cursorline", { bg = "#533f6b" })
+		vim.api.nvim_set_hl(0, "cursorline", { bg = "#37284a" })
 	end,
 })

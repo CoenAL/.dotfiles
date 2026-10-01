@@ -1,7 +1,8 @@
 return {
-	{
-		"echasnovski/mini.pairs",
-		version = false,
-		opts = {},
-	},
+  {
+    "nvim-mini/mini.pairs",
+    version = false,
+    event = "InsertEnter",
+    opts = {},
+  },
 }

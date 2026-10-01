@@ -1,42 +1,60 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		event = "VimEnter",
-		version = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = function()
-					return vim.fn.executable("make") == 1
-				end,
-			},
-			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons", enabled = true },
-		},
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown(),
-					},
-				},
-			})
-			pcall(require("telescope").load_extension, "fzf")
-			pcall(require("telescope").load_extension, "ui-select")
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[f]ind [f]iles in current project" })
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[f]ind by [g]rep" })
-			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[f]ind open [b]uffer" })
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[f]ind in [h]elp doc" })
-			vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[f]ind [K]eymaps" })
-			vim.keymap.set("n", "<leader>/", function()
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 10,
-					previewer = false,
-				}))
-			end, { desc = "[/] Fuzzily search in currentbuffer" })
-		end,
-	},
+  {
+    "nvim-telescope/telescope.nvim",
+    version = "0.1.x",
+    keys = {
+      -- telescope lsp keybindings configured in autocmds.lua
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "[f]ind [f]iles in current project" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "[f]ind by [g]rep" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "[f]ind open [b]uffer" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "[f]ind in [h]elp doc" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "[f]ind [K]eymaps" },
+      {
+        "<leader>fd",
+        "<cmd>Telescope diagnostics bufnr=0<cr>",
+        desc = "[f]ind [d]iagnostics (buffer)",
+      },
+      { "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "[f]ind [d]iagnostics (workspace)" },
+      {
+        "<leader>/",
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find(
+            require("telescope.themes").get_dropdown({
+              winblend = 10,
+              previewer = false,
+            })
+          )
+        end,
+        desc = "[/] Fuzzily search in current buffer",
+      },
+    },
+
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function() return vim.fn.executable("make") == 1 end,
+      },
+      { "nvim-telescope/telescope-ui-select.nvim" },
+      { "nvim-tree/nvim-web-devicons", enabled = true },
+    },
+
+    config = function()
+      require("telescope").setup({
+        pickers = {
+          find_files = {
+            find_command = { "fdfind", "--type", "f", "--follow" },
+          },
+        },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown(),
+          },
+        },
+      })
+      pcall(require("telescope").load_extension, "fzf")
+      pcall(require("telescope").load_extension, "ui-select")
+    end,
+  },
 }

@@ -1,9 +1,12 @@
 return {
-	{
-		"tpope/vim-fugitive",
-		event = { "BufEnter" },
-		config = function()
-			vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git (fugitive)" })
-		end,
-	},
+  {
+    "tpope/vim-fugitive",
+    keys = {
+      {
+        "<leader>gs",
+        "<cmd>Git<cr>",
+        desc = "Git (fugitive)",
+      },
+    },
+  },
 }

@@ -1,38 +1,13 @@
 #!/bin/bash
+# quickstarter scripts for ubuntu (server) to setup i3 environment
 
 # apt update, upgrage and install my packages:
 sudo apt update && sudo apt upgrade -y
-sudo apt install\
-	alacritty\
-	alsa-base\
-	bat\
-	build-essential\
-	feh\
-	firefox\
-	fzf\
-	gnome-themes-extra\
-	i3\
-	lsd\
-	lxappearance\
-	neovim\
-	pcmanfm\
-	picom\
-	polybar\
-	pulseaudio\
-	qt5ct\
-	ripgrep\
-	rofi\
-	stow\
-	unzip\
-	xinit\
-	-y
+sudo apt install alacritty alsa-base bat build-essential fd-find feh firefox fzf gnome-themes-extra i3 lsd lxappearance neovim pcmanfm picom polybar pulseaudio qt5ct ripgrep rofi stow unzip xinit -y
 
 # Symlink dotfiles with stow:
 cd ~/.dotfiles
-stow -S --adopt --no-folding\
-	bash\
-	i3\
-	nvim
+stow -S --adopt --no-folding i3 nvim
 git restore .
 
 # Install JetBrainsMono nerdfonts:

@@ -1,0 +1,26 @@
+set scrolloff 5
+set icons
+set incsearch!
+set incfilter
+set hidden!
+set hiddenfiles '.*:_*'
+set shell sh
+set autoquit
+set previewer ~/.config/lf/pv.sh
+
+set drawbox
+set roundbox
+set borderfmt "\033[36m"
+
+map e $nvim "$f"
+map i $batcat --paging=always $f
+map . set hidden!
+map J :updir; down; open
+map K :updir; up; open
+
+map y
+map yy copy
+map yn yank-basename
+cmd yank-basename &basename -- "$f" | xclip
+map yd yank-dirPath
+cmd yank-dirPath &dirname -- "$fx" | xclip

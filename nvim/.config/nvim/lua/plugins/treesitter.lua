@@ -13,6 +13,12 @@ return {
         "query",
         "vim",
         "vimdoc",
+        "git_rebase",
+        "diff",
+        "gitcommit",
+        "gitignore",
+        "markdown",
+        "markdown_inline",
       },
 
       sync_install = false,
